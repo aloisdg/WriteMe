@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
 using System.Text;
-using System.Threading.Tasks;
 using WriteMe.Model;
 using Version = WriteMe.Model.Version;
 
@@ -42,19 +39,14 @@ namespace WriteMe
 
 		public static string WriteVersion(IList<Version> versions)
 		{
+			Func<int, string> line = i => i + 1 < versions.Count ? Environment.NewLine : String.Empty;
 			var stringBuilder = new StringBuilder("## Evolutions" + Environment.NewLine + Environment.NewLine);
 			for (var i = 0; i < versions.Count; i++)
 			{
-				var version = versions[i];
-				stringBuilder.AppendLine("### " + version.Name + Environment.NewLine);
-				foreach (var evolution in version.Evolutions)
-				{
-					stringBuilder.Append("* " + evolution);
-					if (i + 1 < versions.Count)
-						stringBuilder.AppendLine();
-				}
-				if (i + 1 < versions.Count)
-					stringBuilder.AppendLine();
+				stringBuilder.AppendFormat("### {0}{1}{1}", versions[i].Name, Environment.NewLine);
+				foreach (var evolution in versions[i].Evolutions)
+					stringBuilder.AppendFormat("* {0}{1}", evolution, line(i));
+				stringBuilder.Append(line(i));
 			}
 			return stringBuilder.ToString();
 		}
