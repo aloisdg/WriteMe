@@ -5,6 +5,7 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using WriteMe.Model;
+using Version = WriteMe.Model.Version;
 
 namespace WriteMe
 {
@@ -39,6 +40,25 @@ namespace WriteMe
 [![Demo {0}]({1})]({2})", name, image, video);
 		}
 
+		public static string WriteVersion(IList<Version> versions)
+		{
+			var stringBuilder = new StringBuilder("## Evolutions" + Environment.NewLine + Environment.NewLine);
+			for (var i = 0; i < versions.Count; i++)
+			{
+				var version = versions[i];
+				stringBuilder.AppendLine("### " + version.Name + Environment.NewLine);
+				foreach (var evolution in version.Evolutions)
+				{
+					stringBuilder.Append("* " + evolution);
+					if (i + 1 < versions.Count)
+						stringBuilder.AppendLine();
+				}
+				if (i + 1 < versions.Count)
+					stringBuilder.AppendLine();
+			}
+			return stringBuilder.ToString();
+		}
+
 		public static string WriteIssue(string author, string name)
 		{
 			return String.Format(@"## Bug Reports & Feature Requests
@@ -48,6 +68,7 @@ You can help by reporting bugs, suggesting features, reviewing feature specifica
 Use [GitHub Issues](https://github.com/{0}/{1}/issues) for all of that.", author, name);
 		}
 
+		// ToDo
 		public static string WriteContributing()
 		{
 			return @"## Contributing
@@ -68,6 +89,7 @@ All pull requests are welcome !";
 				WriteSummary(project.Basics.Summary),
 				WriteBadges(project.Basics.Author, project.Basics.Name),
 				WriteDemo(project.Basics.Name, project.Basics.Image, project.Basics.Video),
+				WriteVersion(project.Versions),
 				WriteIssue(project.Basics.Author, project.Basics.Name),
 				WriteContributing());
 		}

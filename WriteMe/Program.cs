@@ -28,6 +28,7 @@ namespace WriteMe
 		{
 			var json = File.ReadAllText(path);
 			var project = JsonConvert.DeserializeObject<Project>(json);
+			project = project.Clean(project);
 			var content = WriteHelper.WriteMe(project);
 			var pathReadMe = Path.Combine(Path.GetDirectoryName(path), "README.md");
 			File.WriteAllText(pathReadMe, content);
