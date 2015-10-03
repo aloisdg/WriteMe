@@ -8,9 +8,14 @@ namespace WriteMe
 {
 	public static class WriteHelper
 	{
-		public static string WriteTitle(string title)
+		/// <summary>
+		///Write the project name as a Markdown main title
+		/// </summary>
+		/// <param name="name">Project name</param>
+		/// <returns>Project title as a Markdown main title</returns>
+		public static string WriteTitle(string name)
 		{
-			return String.Format("# {0}", title);
+			return String.Format("# {0}", name);
 		}
 
 		public static string WriteSummary(string summary)
@@ -30,6 +35,13 @@ namespace WriteMe
 				author, name, name.ToLowerInvariant());
 		}
 
+		/// <summary>
+		/// Write a demonstration as a picture or a video Markdown
+		/// </summary>
+		/// <param name="name">Project name</param>
+		/// <param name="image">Project image url</param>
+		/// <param name="video">Project video url</param>
+		/// <returns>Demonstration as a picture or a video Markdown</returns>
 		public static string WriteDemo(string name, string image, string video)
 		{
 			return String.Format(@"## Demo
