@@ -14,13 +14,12 @@ namespace WriteMe
 	{
 		static void Main(string[] args)
 		{
-			//if (args == null || args.Any())
-			//{
-			//	Console.WriteLine("Usage: ./WriteMe.exe path/project.json");
-			//	return;
-			//}
-			//Start(args[0]);
-			Start(@"C:\Users\alois\Desktop\test.json");
+			if (args == null || args.Any())
+			{
+				Console.WriteLine("Usage: ./WriteMe.exe path/readme.json");
+				return;
+			}
+			Start(args[0]);
 		}
 
 		// ToDO: Check for error
