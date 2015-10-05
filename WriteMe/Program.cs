@@ -10,11 +10,11 @@ using WriteMe.Model;
 
 namespace WriteMe
 {
-	class Program
+	public class Program
 	{
-		static void Main(string[] args)
+		public static void Main(string[] args)
 		{
-			if (args == null || args.Any())
+			if (args == null || !args.Any())
 			{
 				Console.WriteLine("Usage: ./WriteMe.exe path/readme.json");
 				return;
@@ -30,6 +30,8 @@ namespace WriteMe
 			project = project.Clean(project);
 			var content = WriteHelper.WriteMe(project);
 			var pathReadMe = Path.Combine(Path.GetDirectoryName(path), "README.md");
+			Console.WriteLine(pathReadMe);
+			Console.ReadLine();
 			File.WriteAllText(pathReadMe, content);
 		}
 	}
