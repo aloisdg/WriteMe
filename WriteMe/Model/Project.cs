@@ -32,22 +32,7 @@ namespace WriteMe.Model
 		{
 			var semver = new string(version.Where(c => c.Equals('.') || Char.IsDigit(c)).ToArray());
 			return !semver.Contains('.') ? new[] { semver, "", "" }
-				: new List<string>(semver.Split(new[] {'.'}, StringSplitOptions.RemoveEmptyEntries)) {"", ""}.ToArray();
+				: new List<string>(semver.Split(new[] { '.' }, StringSplitOptions.RemoveEmptyEntries)) { "", "" }.ToArray();
 		}
-	}
-
-	public class Basics
-	{
-		public string Author { get; set; }
-		public string Name { get; set; }
-		public string Summary { get; set; }
-		public string Image { get; set; }
-		public string Video { get; set; }
-	}
-
-	public class Version
-	{
-		public string Name { get; set; }
-		public string[] Evolutions { get; set; }
 	}
 }
