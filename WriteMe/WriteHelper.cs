@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.Linq;
 using System.Text;
+using System.Xml.Schema;
 using WriteMe.Model;
 using Version = WriteMe.Model.Version;
 
@@ -65,13 +68,21 @@ namespace WriteMe
 
 		public static string WriteVersion(IList<Version> versions)
 		{
-			Func<int, string> line = i => i + 1 < versions.Count ? Environment.NewLine : String.Empty;
+			Func<bool, string> lineOrEmpty = b => b ? Environment.NewLine : String.Empty;
+			Func<int, int, bool> isLimit = (n, limit) => n + 1 < limit;
+			Func<int, string> line = n => lineOrEmpty(isLimit(n, versions.Count));
+
 			var stringBuilder = new StringBuilder("## Evolutions" + Environment.NewLine + Environment.NewLine);
 			for (var i = 0; i < versions.Count; i++)
 			{
 				stringBuilder.AppendFormat("### {0}{1}{1}", versions[i].Name, Environment.NewLine);
-				foreach (var evolution in versions[i].Evolutions)
-					stringBuilder.AppendFormat("* {0}{1}", evolution, line(i));
+				for (int index = 0; index < versions[i].Evolutions.Length; index++)
+				{
+					var length = versions[i].Evolutions.Length;
+					stringBuilder.AppendFormat("* {0}{1}",
+						versions[i].Evolutions[index],
+						lineOrEmpty(!String.IsNullOrEmpty(line(i)) || isLimit(index, length)));
+				}
 				stringBuilder.Append(line(i));
 			}
 			return stringBuilder.ToString();

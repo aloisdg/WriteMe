@@ -1,6 +1,6 @@
 # name
 
-summary summary
+summary
 
 ![Build](https://img.shields.io/badge/Build-:-lightgrey.svg?style=flat-square)
 [![AppVeyor](https://img.shields.io/appveyor/ci/author/name.svg?style=flat-square)](https://ci.appveyor.com/project/author/name)
@@ -18,8 +18,8 @@ summary summary
 
 ### v2
 
-* Add test 2
-* Add test 3
+* Add test 0
+* Add test 1
 
 ### v1.2-alpha
 
@@ -28,17 +28,18 @@ summary summary
 
 ### v1.1
 
-* Add test 2
-* Add test 3
+* Add test 4
+* Add test 5
 
 ### v1
 
-* Add test 2
-* Add test 3
+* Add test 6
+* Add test 7
 
 ### v0
 
-* Add test 0* Add test 1
+* Add test 8
+* Add test 9
 
 ## Bug Reports & Feature Requests
 
@@ -48,10 +49,11 @@ Use [GitHub Issues](https://github.com/author/name/issues) for all of that.
 
 ## Contributing
 
-1. Fork the project.
-2. Create a branch for your new feature.
-3. Write tests.
-4. Write code to make the tests pass.
-5. Submit a pull request.
+1. Talk about your feature on [issues](https://github.com/author/name/issues).
+2. [Fork](https://help.github.com/articles/fork-a-repo/) the project.
+3. Create a branch for your awesome feature.
+4. Write tests.
+5. Write code to make the tests pass.
+6. [Submit a pull request](https://help.github.com/articles/creating-a-pull-request/).
 
 All pull requests are welcome !
