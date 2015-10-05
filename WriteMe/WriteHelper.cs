@@ -86,18 +86,18 @@ You can help by reporting bugs, suggesting features, reviewing feature specifica
 Use [GitHub Issues](https://github.com/{0}/{1}/issues) for all of that.", author, name);
 		}
 
-		// ToDo
-		public static string WriteContributing()
+		public static string WriteContributing(string author, string name)
 		{
-			return @"## Contributing
+			return String.Format(@"## Contributing
 
-1. Fork the project.
-2. Create a branch for your new feature.
-3. Write tests.
-4. Write code to make the tests pass.
-5. Submit a pull request.
+1. Talk about your feature on [issues](https://github.com/{0}/{1}/issues).
+2. [Fork](https://help.github.com/articles/fork-a-repo/) the project.
+3. Create a branch for your awesome feature.
+4. Write tests.
+5. Write code to make the tests pass.
+6. [Submit a pull request](https://help.github.com/articles/creating-a-pull-request/).
 
-All pull requests are welcome !";
+All pull requests are welcome !", author, name);
 		}
 
 		public static string WriteMe(Project project)
@@ -109,7 +109,7 @@ All pull requests are welcome !";
 				WriteDemo(project.Basics.Name, project.Basics.Image, project.Basics.Video),
 				WriteVersion(project.Versions),
 				WriteIssue(project.Basics.Author, project.Basics.Name),
-				WriteContributing());
+				WriteContributing(project.Basics.Author, project.Basics.Name));
 		}
 	}
 }
