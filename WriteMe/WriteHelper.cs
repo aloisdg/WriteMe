@@ -56,9 +56,10 @@ namespace WriteMe
 
 		public static string WriteNugetInstall(string name)
 		{
-			string s  = String.Format(@"You can install {0} as a nuget package: Install-Package {0}
+			string s = String.Format(@"You can install {0} as a nuget package: Install-Package {0}
 
-{0} is a Portable Class Library with support for .Net 4+, SilverLight 5, Windows Phone 8 and Win Store applications. Also {0} symbols nuget package is published so you can step through {0} code while debugging your code.", name)
+{0} is a Portable Class Library with support for .Net 4+, SilverLight 5, Windows Phone 8 and Win Store applications. Also {0} symbols nuget package is published so you can step through {0} code while debugging your code.",
+				name);
 			return s;
 		}
 
