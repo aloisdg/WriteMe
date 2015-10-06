@@ -1,0 +1,31 @@
+{
+    "basics": {
+        "author": "author",
+        "name": "name",
+        "summary": "summary",
+        "image": "image",
+        "video": "video"
+    },
+    "versions": [
+        {
+            "Name": "v0",
+            "Evolutions": [ "Add test 8", "Add test 9" ]
+        },
+        {
+            "Name": "v2",
+            "Evolutions": [ "Add test 0", "Add test 1" ]
+        },
+        {
+            "Name": "v1",
+            "Evolutions": [ "Add test 6", "Add test 7" ]
+        },
+        {
+            "Name": "v1.1",
+            "Evolutions": [ "Add test 4", "Add test 5" ]
+        },
+        {
+            "Name": "v1.2-alpha",
+            "Evolutions": [ "Add test 2", "Add test 3" ]
+        }
+    ]
+}
