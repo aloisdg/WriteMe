@@ -71,26 +71,28 @@ namespace WriteMe
 		/// </summary>
 		/// <param name="versions">A list of version to write in Markdown</param>
 		/// <returns>A Markdown list in a string form</returns>
-		public static string WriteVersion(IList<Version> versions)
+		public static string WriteVersions(IList<Version> versions)
 		{
-			Func<bool, string> lineOrEmpty = b => b ? Environment.NewLine : String.Empty;
-			Func<int, int, bool> isLimit = (n, limit) => n + 1 < limit;
-			Func<int, string> line = n => lineOrEmpty(isLimit(n, versions.Count));
+			var separator = Environment.NewLine + "* ";
+			var stringBuilder = new StringBuilder("## Evolutions");
+			stringBuilder.AppendLine().AppendLine();
 
-			var stringBuilder = new StringBuilder("## Evolutions" + Environment.NewLine + Environment.NewLine);
-			for (var i = 0; i < versions.Count; i++)
+			foreach (var version in versions)
 			{
-				stringBuilder.AppendFormat("### {0}{1}{1}", versions[i].Name, Environment.NewLine);
-				for (int index = 0; index < versions[i].Evolutions.Length; index++)
+				stringBuilder.Append("### ")
+				    .AppendLine(version.Name)
+				    .AppendLine();
+
+				var evolutions = version.Evolutions.Where(s => !String.IsNullOrWhiteSpace(s));
+				if (evolutions.Any())
 				{
-					var length = versions[i].Evolutions.Length;
-					stringBuilder.AppendFormat("* {0}{1}",
-						versions[i].Evolutions[index],
-						lineOrEmpty(!String.IsNullOrEmpty(line(i)) || isLimit(index, length)));
+					stringBuilder.Append("* ")
+					    .AppendLine(String.Join(separator, evolutions))
+					    .AppendLine();
 				}
-				stringBuilder.Append(line(i));
 			}
-			return stringBuilder.ToString();
+
+			return stringBuilder.ToString().TrimEnd(Environment.NewLine.ToCharArray());
 		}
 
 		public static string WriteIssue(string author, string name)
@@ -123,7 +125,7 @@ All pull requests are welcome !", author, name);
 				WriteSummary(project.Basics.Summary),
 				WriteBadges(project.Basics.Author, project.Basics.Name),
 				WriteDemo(project.Basics.Name, project.Basics.Image, project.Basics.Video),
-				WriteVersion(project.Versions),
+				WriteVersions(project.Versions),
 				WriteIssue(project.Basics.Author, project.Basics.Name),
 				WriteContributing(project.Basics.Author, project.Basics.Name));
 		}

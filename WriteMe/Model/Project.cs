@@ -37,6 +37,9 @@ namespace WriteMe.Model
 		/// <summary>
 		/// Extract SemVer format from string into an array
 		/// </summary>
+		/// <remarks>
+		/// Remove and use semver.net
+		/// </remarks>
 		/// <param name="version">A version in the SemVer format</param>
 		/// <returns>An array of string composed by SemVer format</returns>
 		/// <example>
@@ -45,9 +48,10 @@ namespace WriteMe.Model
 		/// </example>
 		private static string[] ExtractSemanticVersion(string version)
 		{
-			var semver = new string(version.Where(c => c.Equals('.') || Char.IsDigit(c)).ToArray());
-			return !semver.Contains('.') ? new[] { semver, String.Empty, String.Empty }
-				: new List<string>(semver.Split(new[] { '.' }, StringSplitOptions.RemoveEmptyEntries)) { String.Empty, String.Empty }.ToArray();
+			const int maxVersionParts = 3;
+			var semanticVersions = new string(version.Where(c => c.Equals('.') || Char.IsDigit(c)).ToArray());
+			var values = semanticVersions.Split(new[] { '.' }, StringSplitOptions.RemoveEmptyEntries);
+			return values.Concat(Enumerable.Repeat(String.Empty, maxVersionParts - values.Length)).ToArray();
 		}
 	}
 }
