@@ -66,6 +66,11 @@ namespace WriteMe
 			return s;
 		}
 
+		/// <summary>
+		/// Write a Markdown list in a string form from a list of versions
+		/// </summary>
+		/// <param name="versions">A list of version to write in Markdown</param>
+		/// <returns>A Markdown list in a string form</returns>
 		public static string WriteVersion(IList<Version> versions)
 		{
 			Func<bool, string> lineOrEmpty = b => b ? Environment.NewLine : String.Empty;

@@ -1,16 +1,13 @@
-﻿using System;
-using System.Diagnostics;
-using System.IO;
-using System.Reflection;
+﻿using System.IO;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace WriteMe.Test
 {
 	[TestClass]
-	public class UnitTest1
+	public class UnitTest
 	{
 		[TestMethod]
-		public void TestMethod1()
+		public void TestReadMe()
 		{
 			Program.Main(new[] { @"..\..\readme.json" });
 
