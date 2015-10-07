@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using SemVer;
 
 namespace WriteMe.Model
 {
@@ -11,8 +12,10 @@ namespace WriteMe.Model
 
 		public Project Clean(Project project)
 		{
+			//SemVer.SemanticVersion t = new SemanticVersion();
+
 			Basics = project.Basics;
-			Versions = (OrderByDescendingVersion(project.Versions)).ToArray();
+			Versions = project.Versions.OrderByDescending(o => o.Name).ToArray(); //(OrderByDescendingVersion(project.Versions)).ToArray();
 			return this;
 		}
 
@@ -24,15 +27,15 @@ namespace WriteMe.Model
 		/// <example>
 		/// [[1, 2], [1, 1], [2, 0]] will give [[2, 0], [1, 2], [1, 1]]
 		/// </example>
-		private static IEnumerable<Version> OrderByDescendingVersion(IEnumerable<Version> versions)
-		{
-			return versions
-				.Select(v => new { v.Name, v.Evolutions, SemVer = ExtractSemanticVersion(v.Name) })
-				.OrderByDescending(v => v.SemVer[0])
-				.ThenByDescending(v => v.SemVer[1])
-				.ThenByDescending(v => v.SemVer[2])
-				.Select(v => new Version { Name = v.Name, Evolutions = v.Evolutions });
-		}
+		//private static IEnumerable<Version> OrderByDescendingVersion(IEnumerable<Version> versions)
+		//{
+		//	return versions
+		//		.Select(v => new { v.Name, v.Evolutions, SemVer = ExtractSemanticVersion(v.Name) })
+		//		.OrderByDescending(v => v.SemVer[0])
+		//		.ThenByDescending(v => v.SemVer[1])
+		//		.ThenByDescending(v => v.SemVer[2])
+		//		.Select(v => new Version { Name = v.Name, Evolutions = v.Evolutions });
+		//}
 
 		/// <summary>
 		/// Extract SemVer format from string into an array

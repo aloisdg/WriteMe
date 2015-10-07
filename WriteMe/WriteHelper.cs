@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Xml.Schema;
+using SemVer;
 using WriteMe.Model;
 using Version = WriteMe.Model.Version;
 
@@ -80,7 +81,7 @@ namespace WriteMe
 			foreach (var version in versions)
 			{
 				stringBuilder.Append("### ")
-				    .AppendLine(version.Name)
+				    .AppendLine(version.Name.ToString())
 				    .AppendLine();
 
 				var evolutions = version.Evolutions.Where(s => !String.IsNullOrWhiteSpace(s));

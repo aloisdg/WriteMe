@@ -30,7 +30,6 @@ namespace WriteMe
 			project = project.Clean(project);
 			var content = WriteHelper.WriteMe(project);
 			var pathReadMe = Path.Combine(Path.GetDirectoryName(path), "README.md");
-			Console.WriteLine(pathReadMe);
 			File.WriteAllText(pathReadMe, content);
 		}
 	}
