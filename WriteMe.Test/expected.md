@@ -16,27 +16,27 @@ summary
 
 ## Evolutions
 
-### v2
+### 2.0.0
 
 * Add test 0
 * Add test 1
 
-### v1.2-alpha
+### 1.2.0-alpha
 
 * Add test 2
 * Add test 3
 
-### v1.1
+### 1.1.0
 
 * Add test 4
 * Add test 5
 
-### v1
+### 1.0.0
 
 * Add test 6
 * Add test 7
 
-### v0
+### 0.0.0
 
 * Add test 8
 * Add test 9
