@@ -1,0 +1,25 @@
+{
+    "basics": {
+        "author": "aloisdg",
+        "name": "WriteMe",
+        "summary": "WriteMe is a tool to write a README.md file from a config file.",
+        "image": "image",
+        "video": "video"
+    },
+    "versions": [
+        {
+            "Name": "v0.1.0-alpha",
+            "Evolutions": [
+                "Init project",
+                "Add naive implementation"
+            ]
+        },
+        {
+            "Name": "v0.1.0-beta",
+            "Evolutions": [
+                "Improve the first implementation",
+                "Add basic unit test coverage"
+            ]
+        }
+    ]
+}
