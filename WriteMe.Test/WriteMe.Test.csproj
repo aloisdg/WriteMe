@@ -57,6 +57,7 @@
     <None Include="app.config" />
     <None Include="expected.md" />
     <None Include="readme.json" />
+    <None Include="README.md" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\WriteMe\WriteMe.csproj">
